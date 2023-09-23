@@ -1,0 +1,4 @@
+components:
+  product: "components/listing/product.html"
+  navbar: "components/ui/navbar.html"
+  footer: "components/ui/footer.html"

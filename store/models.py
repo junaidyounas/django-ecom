@@ -1,6 +1,8 @@
 from django.db import models
 import datetime
 import django.db.models.deletion
+from django.db.models.signals import pre_delete
+from django.dispatch import receiver
 
 # Create your models here.
 class Category(models.Model):
@@ -11,6 +13,7 @@ class Category(models.Model):
 
     class Meta:
         verbose_name_plural = 'categories'
+
 
 class Customer(models.Model):
     full_name = models.CharField(max_length=100)
@@ -26,10 +29,22 @@ class Product(models.Model):
     price = models.IntegerField(max_length=10)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, default=1)
     description = models.TextField(max_length=750, default='', blank=True, null=True)
-    images = models.ImageField(upload_to='uploads/product/', default = 'img/None/no-img.jpg')
+    # images = models.FileField(widget=forms.ClearableFileInput(attrs={'multiple': True}, upload_to='uploads/product/')
+    # images = models.ImageField(upload_to='uploads/product/', default = 'img/None/no-img.jpg')
 
     def __str__(self):
         return self.name
+
+class ProductImages(models.Model):
+    product = models.ForeignKey(Product, related_name='images', on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='uploads/product/')
+
+# Signal handler to delete associated image file
+@receiver(pre_delete, sender=ProductImages)
+def delete_image(sender, instance, **kwargs):
+    # Delete the associated image file when the record is deleted
+    instance.image.delete(False)  # Passing False to delete the file immediately
+
 
 class Order(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)

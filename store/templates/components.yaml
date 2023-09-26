@@ -2,3 +2,4 @@ components:
   product: "components/listing/product.html"
   navbar: "components/ui/navbar.html"
   footer: "components/ui/footer.html"
+  home_banner: "components/ui/home_banner.html"

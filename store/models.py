@@ -26,11 +26,9 @@ class Customer(models.Model):
 
 class Product(models.Model):
     name = models.CharField(max_length=150)
-    price = models.IntegerField(max_length=10)
+    price = models.IntegerField()
     category = models.ForeignKey(Category, on_delete=models.CASCADE, default=1)
     description = models.TextField(max_length=750, default='', blank=True, null=True)
-    # images = models.FileField(widget=forms.ClearableFileInput(attrs={'multiple': True}, upload_to='uploads/product/')
-    # images = models.ImageField(upload_to='uploads/product/', default = 'img/None/no-img.jpg')
 
     def __str__(self):
         return self.name

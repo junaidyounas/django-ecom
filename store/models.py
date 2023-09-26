@@ -4,7 +4,7 @@ import django.db.models.deletion
 from django.db.models.signals import pre_delete
 from django.dispatch import receiver
 from django.utils.text import slugify
-
+from django.utils import timezone
 
 # Create your models here.
 class Category(models.Model):
@@ -32,6 +32,7 @@ class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE, default=1)
     description = models.TextField(max_length=750, default='', blank=True, null=True)
     slug = models.SlugField(max_length=150, blank=True)
+    created_at = models.DateTimeField(default=timezone.now)
 
     class Meta:
         unique_together = ('name', 'slug')

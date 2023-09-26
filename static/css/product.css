@@ -4,6 +4,10 @@
     border: 2px solid gray;
 }
 
+.product-detail-img {
+    object-fit: cover;
+}
+
 .home-mini-product img {
     width: 100%
 }

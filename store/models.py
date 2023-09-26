@@ -3,6 +3,8 @@ import datetime
 import django.db.models.deletion
 from django.db.models.signals import pre_delete
 from django.dispatch import receiver
+from django.utils.text import slugify
+
 
 # Create your models here.
 class Category(models.Model):
@@ -29,6 +31,15 @@ class Product(models.Model):
     price = models.IntegerField()
     category = models.ForeignKey(Category, on_delete=models.CASCADE, default=1)
     description = models.TextField(max_length=750, default='', blank=True, null=True)
+    slug = models.SlugField(max_length=150, blank=True)
+
+    class Meta:
+        unique_together = ('name', 'slug')
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.name

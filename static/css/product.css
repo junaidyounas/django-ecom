@@ -1,0 +1,9 @@
+/* Mini product on home page style */
+
+.home-mini-product {
+    border: 2px solid gray;
+}
+
+.home-mini-product img {
+    width: 100%
+}

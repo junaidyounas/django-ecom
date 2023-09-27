@@ -9,6 +9,11 @@ from django.utils import timezone
 # Create your models here.
 class Category(models.Model):
     name = models.CharField(max_length=50)
+    slug = models.SlugField(max_length=150, blank=True)
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.name

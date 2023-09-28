@@ -5,6 +5,11 @@ from django.db.models.signals import pre_delete
 from django.dispatch import receiver
 from django.utils.text import slugify
 from django.utils import timezone
+from PIL import Image
+from io import BytesIO
+import sys
+from django.core.files.uploadedfile import InMemoryUploadedFile
+
 
 # Create your models here.
 class Category(models.Model):
@@ -53,6 +58,16 @@ class Product(models.Model):
 class ProductImages(models.Model):
     product = models.ForeignKey(Product, related_name='images', on_delete=models.CASCADE)
     image = models.ImageField(upload_to='uploads/product/')
+
+    def save(self, *args, **kwargs):
+        img = Image.open(self.image)
+        if img.mode == 'RGBA':
+            img = img.convert('RGB')
+        output_io = BytesIO()
+        img.save(output_io, format='JPEG', quality=60)  # JPEG compression with quality 60
+        output_io.seek(0)
+        self.image = InMemoryUploadedFile(output_io, 'ImageField', f'{self.image.name.split(".")[0]}.jpg', 'image/jpeg', sys.getsizeof(output_io), None)
+        super(ProductImages, self).save(*args, **kwargs)
 
 # Signal handler to delete associated image file
 @receiver(pre_delete, sender=ProductImages)

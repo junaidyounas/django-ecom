@@ -1,0 +1,4 @@
+/* Define a custom class for setting line height */
+.custom-line-height {
+    line-height: 0.5; /* Adjust this value to your desired line height */
+}

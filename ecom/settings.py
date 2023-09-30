@@ -30,7 +30,21 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'store',
     'slippers',
+    'ckeditor'
 ]
+
+# CKEDITOR_CONFIGS = {
+    # 'default': {
+        # 'toolbar': 'Custom',
+        # 'toolbar_Custom': [
+        #     ['Bold', 'Italic', 'Underline', 'Strike'],
+        #     ['NumberedList', 'BulletedList'],
+        #     ['Link', 'Unlink'],
+        #     ['RemoveFormat', 'Source'],
+        # ],
+        # 'contentsCss': ['../static/css/ckeditor_custom_styles.css'],
+    # },
+# }
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

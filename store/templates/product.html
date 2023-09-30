@@ -3,9 +3,9 @@
 
 
 {% if product %}
-<section class="py-5">
+<section>
     <div class="container px-4 px-lg-5 my-5">
-        <div class="row gx-4 gx-lg-5 align-items-center">
+        <div class="row gx-4 gx-lg-5">
             <div class="col-md-6">
                 {% comment %} <img class="card-img-top mb-2 mb-md-0 product-detail-img" src="{{product.images.all.first.image.url}}" alt="..." /> {% endcomment %}
                 <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false" data-bs-interval="false">
@@ -28,14 +28,14 @@
             </div>
             <div class="col-md-6">
                 {% comment %} <div class="small mb-1">SKU: BST-498</div> {% endcomment %}
-                <a class="card-text" style="font-size: 15px; text-decoration: inherit; line-height: 5px;"> {{product.category}}</a>
+                <a class="card-text" style="font-size: 15px; text-decoration: inherit; line-height: 5px;"><span style="color: black; font-weight: bold; font-size:18px;">Category: </span> {{product.category}}</a>
 
                 <h1 class="display-5 fw-bolder">{{product.name}}</h1>
                 <div class="fs-5 mb-2">
                     {% comment %} <span class="text-decoration-line-through">Rs {{product.price}}</span> {% endcomment %}
                     <span>Rs {{product.price}}</span>
                 </div>
-                <p class="lead">{{product.description}}</p>
+                <span style="line-height: 1.3;">{{product.description|safe}}</span>
                 
                 {% comment %} <div class="d-flex">
                     <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
@@ -53,6 +53,7 @@
 {% endif %}
 
 <!-- Related items section-->
+{% if related_products %}
 <section class="py-5 bg-light">
     <div class="container px-4 px-lg-5 mt-5">
         <h2 class="fw-bolder mb-4">Related products</h2>
@@ -64,6 +65,7 @@
         </div>
     </div>
 </section>
+{% endif %}
 
 {% endblock %}
 

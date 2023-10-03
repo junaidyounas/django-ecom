@@ -3,3 +3,17 @@
     font-family: 'Sora', sans-serif;
     font-weight: 400;
 }
+.wrapper {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header,
+footer {
+}
+
+main {
+    flex: 1;
+    background: rgba(242, 32, 242, 0.1);
+}

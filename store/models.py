@@ -9,6 +9,7 @@ from PIL import Image
 from io import BytesIO
 import sys
 from django.core.files.uploadedfile import InMemoryUploadedFile
+from ckeditor.fields import RichTextField
 
 
 # Create your models here.
@@ -40,7 +41,7 @@ class Product(models.Model):
     name = models.CharField(max_length=150)
     price = models.IntegerField()
     category = models.ForeignKey(Category, on_delete=models.CASCADE, default=1)
-    description = models.TextField(max_length=750, default='', blank=True, null=True)
+    description = RichTextField(max_length=2000, default='', blank=True, null=True)
     slug = models.SlugField(max_length=150, blank=True)
     created_at = models.DateTimeField(default=timezone.now)
 

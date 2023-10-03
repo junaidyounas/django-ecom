@@ -1,111 +1,140 @@
 {% extends 'base.html' %} {% load static %} {% block content %} {% load slippers %}
 
+<head>
+    <meta charset="UTF-8">
+    <link href="{% static 'css/order.css' %}" rel="stylesheet" />
+</head>
+
 <div class="container">
-     ]
-     <div class="text-center mt-5">
-          <h1>Fill the contact form</h1>
+     <div class="text-center mt-4">
+          <h3>Fill the following contact form</h3>
      </div>
 
-     <div class="row">
-          <div class="col-lg-7 mx-auto">
-               <div class="card mt-2 mx-auto p-4 bg-light">
-                    <div class="card-body bg-light">
-                         <div class="container">
-                              <form id="contact-form" role="form">
-                                   <div class="controls">
-                                        <div class="row">
-                                             <div class="col-md-6">
-                                                  <div class="form-group">
-                                                       <label for="form_name">First Name</label>
-                                                       <input
-                                                            id="form_name"
-                                                            type="text"
-                                                            name="name"
-                                                            class="form-control"
-                                                            placeholder="Please enter your firstname *"
-                                                            required="required"
-                                                            data-error="Firstname is required."
-                                                       />
-                                                  </div>
-                                             </div>
-                                             <div class="col-md-6">
-                                                  <div class="form-group">
-                                                       <label for="form_lastname">Father Name</label>
-                                                       <input
-                                                            id="form_lastname"
-                                                            type="text"
-                                                            name="surname"
-                                                            class="form-control"
-                                                            placeholder="Please enter your lastname *"
-                                                            required="required"
-                                                            data-error="Lastname is required."
-                                                       />
-                                                  </div>
-                                             </div>
-                                        </div>
-                                        <div class="row">
-                                             <div class="col-md-6">
-                                                  <div class="form-group">
-                                                       <label for="form_email">Phone Number</label>
-                                                       <input
-                                                            id="form_email"
-                                                            type="email"
-                                                            name="email"
-                                                            class="form-control"
-                                                            placeholder="Please enter your email *"
-                                                            required="required"
-                                                            data-error="Valid email is required."
-                                                       />
-                                                  </div>
-                                             </div>
-                                             <div class="col-md-6">
-                                                  <div class="form-group">
-                                                       <label for="form_need">Please specify your need *</label>
-                                                       <select
-                                                            id="form_need"
-                                                            name="need"
-                                                            class="form-control"
-                                                            required="required"
-                                                            data-error="Please specify your need."
-                                                       >
-                                                            <option value="" selected disabled>--Select Your Issue--</option>
-                                                            <option>Request Invoice for order</option>
-                                                            <option>Request order status</option>
-                                                            <option>Haven't received cashback yet</option>
-                                                            <option>Other</option>
-                                                       </select>
-                                                  </div>
-                                             </div>
-                                        </div>
-                                        <div class="row">
-                                             <div class="col-md-12">
-                                                  <div class="form-group">
-                                                       <label for="form_message">Message *</label>
-                                                       <textarea
-                                                            id="form_message"
-                                                            name="message"
-                                                            class="form-control"
-                                                            placeholder="Write your message here."
-                                                            rows="4"
-                                                            required="required"
-                                                            data-error="Please, leave us a message."
-                                                       ></textarea>
-                                                  </div>
-                                             </div>
-
-                                             <div class="col-md-12">
-                                                  <input type="submit" class="btn btn-success btn-send pt-2 btn-block" value="Send Message" />
-                                             </div>
-                                        </div>
-                                   </div>
-                              </form>
-                         </div>
-                    </div>
-               </div>
-               <!-- /.8 -->
+     {% if product %}
+     <div class="order-container d-lg-flex">
+          <div class="box-1 bg-light user">
+             {% comment %} <div class="d-flex align-items-center mb-3">
+                <img src="https://images.pexels.com/photos/4925916/pexels-photo-4925916.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" class="pic rounded-circle" alt=""> 
+                <p class="ps-2 name">Oliur</p>
+             </div> {% endcomment %}
+             <div class="box-inner-1 pb-3 mb-3 ">
+                <div class="d-flex justify-content-between mb-3 userdetails">
+                   <p class="fw-bold">{{product.name}} </p>
+                   <p class="fw-lighter"><span class="fas fa-dollar-sign"></span>Rs {{product.price}}</p>
+                </div>
+                <div id="my" class="carousel slide carousel-fade img-details" data-bs-ride="carousel" data-bs-interval="2000">
+                    
+                   {% comment %} <div class="carousel-indicators"> 
+                    <button type="button" data-bs-target="#my" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button> 
+                    <button type="button" data-bs-target="#my" data-bs-slide-to="1" aria-label="Slide 2"></button> 
+                    <button type="button" data-bs-target="#my" data-bs-slide-to="2" aria-label="Slide 3"></button> 
+                   </div> {% endcomment %}
+                   <div class="carousel-inner">
+                    {% for image in product.images.all %}
+                            <div class="carousel-item {% if forloop.first %}active{% endif %}"> <img src="{{image.image.url}}" class="d-block w-100"> </div>
+                    {% endfor %}
+                   </div>
+                   <button class="carousel-control-prev" type="button" data-bs-target="#my" data-bs-slide="prev">
+                      <div class="icon"> <span class="fas fa-arrow-left"></span> </div>
+                      <span class="visually-hidden">Previous</span> 
+                   </button>
+                   <button class="carousel-control-next" type="button" data-bs-target="#my" data-bs-slide="next">
+                      <div class="icon"> <span class="fas fa-arrow-right"></span> </div>
+                      <span class="visually-hidden">Next</span> 
+                   </button>
+                </div>
+                <p class="dis my-3 info">{{product.description|safe}} </p>
+                {% comment %} <p class="dis mb-3 updates">Free updates forever</p>
+                <p class="dis mb-3 different">Three different colored sets:</p> {% endcomment %}
+                {% comment %} <div class="dis">
+                   <p class="black"><span class="fas fa-arrow-right mb-3 pe-2"></span>Black</p>
+                   <p class="white"><span class="fas fa-arrow-right mb-3 pe-2"></span>White</p>
+                   <p class="pastel"><span class="fas fa-arrow-right mb-3 pe-2"></span>Pastel</p>
+                </div> {% endcomment %}
+                {% comment %} <div>
+                   <p class="dis footer my-3">Here is a quick guide on how to apply them</p>
+                </div> {% endcomment %}
+             </div>
           </div>
-          <!-- /.row-->
-     </div>
+          <div class="box-2">
+             <div class="box-inner-2">
+                <div>
+                   <p class="fw-bold">Contact Details</p>
+                   <p class="dis mb-3">After submitting one of our representatives will contact you shortly</p>
+                </div>
+                <form method="post" action="/save-order/{{product.slug}}">
+                    {% csrf_token %}
+                   <div class="mb-3">
+                      <p class="dis fw-bold mb-2">Email address</p>
+                      <input class="form-control" type="email" placeholder="Enter your email if available"> 
+                   </div>
+                   <div class="mb-3">
+                         <p class="dis fw-bold mb-2">Address</p>
+                         <input class="form-control" type="address" placeholder="Please enter your address"> 
+                    </div>
+                    <div class="mb-3">
+                         <p class="dis fw-bold mb-2">Phone</p>
+                         <input class="form-control" type="phone" placeholder="0300 1234567"> 
+                    </div>
+                   <div>
+                      {% comment %} <p class="dis fw-bold mb-2">Card details</p> {% endcomment %}
+                      {% comment %} <div class="d-flex align-items-center justify-content-between card-atm border rounded">
+                         <div class="fab fa-cc-visa ps-3"></div>
+                         <input type="text" class="form-control" placeholder="Card Details"> 
+                         <div class="d-flex w-50"> <input type="text" class="form-control px-0" placeholder="MM/YY"> <input type="password" maxlength=3 class="form-control px-0" placeholder="CVV"> </div>
+                      </div> {% endcomment %}
+                      <div class="my-3 cardname">
+                         <p class="dis fw-bold mb-2">Message</p>
+                         <input class="form-control" name="message" type="text"> 
+                      </div>
+                      <div class="address">
+                         {% comment %} <p class="dis fw-bold mb-3">Billing address</p> {% endcomment %}
+                         {% comment %} <select class="form-select" aria-label="Default select example">
+                            <option selected hidden>United States</option>
+                            <option value="1">India</option>
+                            <option value="2">Australia</option>
+                            <option value="3">Canada</option>
+                         </select>
+                         <div class="d-flex"> <input class="form-control zip" type="text" placeholder="ZIP"> <input class="form-control state" type="text" placeholder="State"> </div>
+                         <div class=" my-3">
+                            <p class="dis fw-bold mb-2">VAT Number</p>
+                            <div class="inputWithcheck"> <input class="form-control" type="text" value="GB012345B9"> <span class="fas fa-check"></span> </div>
+                         </div> {% endcomment %}
+                         {% comment %} <div class="my-3">
+                            <p class="dis fw-bold mb-2">Discount Code</p>
+                            <input class="form-control text-uppercase" type="text" value="BLACKFRIDAY" id="discount"> 
+                         </div> {% endcomment %}
+                         <div class="d-flex flex-column dis">
+                            {% comment %} <div class="d-flex align-items-center justify-content-between mb-2">
+                               <p>Subtotal</p>
+                               <p><span class="fas fa-dollar-sign"></span>19.00</p>
+                            </div> {% endcomment %}
+                            {% comment %} <div class="d-flex align-items-center justify-content-between mb-2">
+                               <div class="d-flex align-items-center">
+                                  <p class="pe-2">Discount <span class="d-inline-flex align-items-center justify-content-between bg-light px-2 couponCode"> <span id="code" class="pe-2"></span> <span class="fas fa-times close"></span> </span> </p>
+                               </div>
+                               <p><span class="fas fa-dollar-sign"></span>5.00</p>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                               <p>VAT<span>(20%)</span></p>
+                               <p><span class="fas fa-dollar-sign"></span>2.80</p>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                               <p class="fw-bold">Total</p>
+                               <p class="fw-bold"><span class="fas fa-dollar-sign"></span>16.80</p>
+                            </div> {% endcomment %}
+                            <input type="submit" value="Send Inquiry" class="btn btn-primary mt-2"><span class="fas fa-dollar-sign px-1"></span> </div>
+                         </div>
+                      </div>
+                   </div>
+                </form>
+             </div>
+          </div>
+       </div>
+     {% else %}
+        <p>Product not found.</p>
+     {% endif %}
+     
 </div>
 
 {% endblock %}

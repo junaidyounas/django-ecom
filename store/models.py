@@ -85,6 +85,8 @@ class Order(models.Model):
     phone = models.CharField(max_length=12, default='', blank='')
     date = models.DateField(default=datetime.datetime.today)
     status = models.BooleanField(default=False)
+    is_called=models.BooleanField(default=False)
+    message=models.TextField(max_length=400, default='', blank=True, null=True)
 
     def __str__(self):
         return self.product

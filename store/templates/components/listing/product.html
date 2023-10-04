@@ -1,9 +1,10 @@
+{% load humanize %}
 <div class="card mb-4 pb-3" style="width: 18rem; align-items: center;">
   <img src="{{images.first.image.url}}" class="card-img-top-mini" alt="...">
   <div class="card-body" style="width: 100%">
-    <h5 class="card-title">{{name}}</h5>
-    <h6 class="card-text"  style="margin-top: -5px; font-size: 18px; font-weight: bold">Rs {{price}}</h6>
+    <h5 class="card-title" style="font-weight: bold;  font-size: 17px;">{{name}}</h5>
+    <h6 class="card-text"  style="margin-top: -5px; font-size: 16px; font-weight: 400">Rs {{price|intcomma}}</h6>
     <a class="card-text" style="font-size: 15px; text-decoration: inherit; line-height: 5px;"> {{category}}</a>
   </div>
-  <a href="/product/{{slug}}" style="width: 200px;" class="btn btn-outline-primary">Inquiry</a>
+  <a href="/product/{{slug}}" style="width: 200px;" class="btn btn-outline-primary">Contact</a>
 </div>

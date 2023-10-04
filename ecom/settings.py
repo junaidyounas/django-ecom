@@ -30,7 +30,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'store',
     'slippers',
-    'ckeditor'
+    'ckeditor',
+    'django.contrib.humanize',
 ]
 
 # CKEDITOR_CONFIGS = {

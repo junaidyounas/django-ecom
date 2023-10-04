@@ -67,7 +67,7 @@ class ProductImages(models.Model):
         output_io = BytesIO()
         img.save(output_io, format='JPEG', quality=60)  # JPEG compression with quality 60
         output_io.seek(0)
-        self.image = InMemoryUploadedFile(output_io, 'ImageField', f'{self.image.name.split(".")[0]}.jpg', 'image/jpeg', sys.getsizeof(output_io), None)
+        self.image = InMemoryUploadedFile(output_io, 'ImageField', f'{datetime.datetime.now().time()}.jpg', 'image/jpeg', sys.getsizeof(output_io), None)
         super(ProductImages, self).save(*args, **kwargs)
 
 # Signal handler to delete associated image file

@@ -1,5 +1,6 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
 {% load slippers %}
+{% load humanize %}
 
 
 {% if product %}
@@ -33,7 +34,7 @@
                 <h1 class="display-5 fw-bolder">{{product.name}}</h1>
                 <div class="fs-5 mb-2">
                     {% comment %} <span class="text-decoration-line-through">Rs {{product.price}}</span> {% endcomment %}
-                    <span>Rs {{product.price}}</span>
+                    <span>Rs {{product.price|intcomma}}</span>
                 </div>
                 <a href="/order/{{product.slug}}" style="width: 200px;" class="btn btn-outline-primary mb-3">Contact Now</a>
                 <span style="line-height: 1.3;" >{{product.description|safe}}</span>

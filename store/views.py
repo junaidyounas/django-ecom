@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Product,Category,Order
 from django.shortcuts import get_object_or_404
 from random import sample
@@ -46,7 +46,7 @@ def save_order(request, product_slug):
             # Create a new Order instance and populate it with form data
             order = Order(
                 product=product,
-                customer=request.user.customer,  # Assuming you have user authentication
+                # customer=request.user.customer,  # Assuming you have user authentication
                 email=form.cleaned_data['email'],
                 address=form.cleaned_data['address'],
                 phone=form.cleaned_data['phone'],
@@ -54,11 +54,14 @@ def save_order(request, product_slug):
             )
             # Save the order to the database
             order.save()
-            print(email)
+            print(order)
             # Redirect to a success page
-            return redirect('success_page')
+            return redirect('/order-success')
     else:
         form = ContactForm()
 
     return render(request, 'order.html', {'form': form, 'product': product})
 
+
+def order_success(request):
+    return render(request, 'order-success.html')

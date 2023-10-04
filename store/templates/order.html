@@ -66,15 +66,15 @@
                     {% csrf_token %}
                    <div class="mb-3">
                       <p class="dis fw-bold mb-2">Email address</p>
-                      <input class="form-control" type="email" placeholder="Enter your email if available"> 
+                      <input class="form-control" name="email" type="email" placeholder="Enter your email if available"> 
                    </div>
                    <div class="mb-3">
                          <p class="dis fw-bold mb-2">Address</p>
-                         <input class="form-control" type="address" placeholder="Please enter your address"> 
+                         <input class="form-control" name="address" type="address" placeholder="Please enter your address"> 
                     </div>
                     <div class="mb-3">
                          <p class="dis fw-bold mb-2">Phone</p>
-                         <input class="form-control" type="phone" placeholder="0300 1234567"> 
+                         <input class="form-control" name="phone" type="phone" placeholder="0300 1234567"> 
                     </div>
                    <div>
                       {% comment %} <p class="dis fw-bold mb-2">Card details</p> {% endcomment %}

@@ -79,8 +79,9 @@ def delete_image(sender, instance, **kwargs):
 
 class Order(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE, blank=True, null=True)
     quantity = models.IntegerField(default=1)
+    email = models.EmailField(max_length=150, default='')
     address = models.TextField(max_length=200, default='', blank=True, null=True)
     phone = models.CharField(max_length=12, default='', blank='')
     date = models.DateField(default=datetime.datetime.today)
@@ -89,5 +90,5 @@ class Order(models.Model):
     message=models.TextField(max_length=400, default='', blank=True, null=True)
 
     def __str__(self):
-        return self.product
+        return self.phone
 

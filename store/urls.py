@@ -7,4 +7,5 @@ urlpatterns = [
     path('category/<str:category_slug>', views.category_products, name="Category"),
     path('order/<str:product_slug>', views.order, name="Order"),
     path('save-order/<str:product_slug>', views.save_order, name="Order"),
+    path('order-success', views.order_success, name="Success"),
 ]

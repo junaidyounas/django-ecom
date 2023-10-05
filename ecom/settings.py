@@ -13,10 +13,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-dc3irlwrdvbou0$mel^@x)92e$b@qq8z(y)d4rar27@w$nf7+-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
-# ALLOWED_HOSTS = ["chungiapp.com", "www.chungiapp.com"]
+# ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["chungiapp.com", "www.chungiapp.com"]
 
 
 # Application definition

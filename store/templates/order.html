@@ -65,17 +65,21 @@
                 </div>
                 <form method="post" action="/save-order/{{product.slug}}">
                     {% csrf_token %}
+                    <div class="mb-3">
+                     <p class="dis fw-bold mb-2">Your name</p>
+                     <input autocomplete="off" onkeyup="validate()" id="name" class="form-control" name="name" type="text" placeholder="Enter your full name"> 
+                  </div>
                    <div class="mb-3">
                       <p class="dis fw-bold mb-2">Email address</p>
-                      <input class="form-control" name="email" type="email" placeholder="Enter your email if available"> 
+                      <input autocomplete="off" onkeyup="validate()" class="form-control" name="email" type="email" placeholder="Enter your email (optional)"> 
                    </div>
                    <div class="mb-3">
                          <p class="dis fw-bold mb-2">Address</p>
-                         <input class="form-control" name="address" type="address" placeholder="Please enter your address"> 
+                         <input autocomplete="off" onkeyup="validate()" id="address" class="form-control" name="address" type="address" placeholder="Please enter your address"> 
                     </div>
                     <div class="mb-3">
                          <p class="dis fw-bold mb-2">Phone</p>
-                         <input class="form-control" name="phone" type="phone" placeholder="0300 1234567"> 
+                         <input autocomplete="off" onkeyup="validate()" id="phone" class="form-control" name="phone" type="phone" placeholder="0300 1234567"> 
                     </div>
                    <div>
                       {% comment %} <p class="dis fw-bold mb-2">Card details</p> {% endcomment %}
@@ -86,7 +90,7 @@
                       </div> {% endcomment %}
                       <div class="my-3 cardname">
                          <p class="dis fw-bold mb-2">Message</p>
-                         <input class="form-control" name="message" type="text"> 
+                         <input autocomplete="off" onkeyup="validate()" class="form-control" name="message" type="text"> 
                       </div>
                       <div class="address">
                          {% comment %} <p class="dis fw-bold mb-3">Billing address</p> {% endcomment %}
@@ -124,7 +128,7 @@
                                <p class="fw-bold">Total</p>
                                <p class="fw-bold"><span class="fas fa-dollar-sign"></span>16.80</p>
                             </div> {% endcomment %}
-                            <input type="submit" value="Send Inquiry" class="btn btn-primary mt-2"><span class="fas fa-dollar-sign px-1"></span> </div>
+                            <input disabled id="submitBtn" type="submit" value="Send Inquiry" class="btn btn-primary mt-2"><span class="fas fa-dollar-sign px-1"></span> </div>
                          </div>
                       </div>
                    </div>

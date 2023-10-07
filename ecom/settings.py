@@ -97,7 +97,7 @@ DATABASES = {
         'NAME': 'chungiap_decom',
         'USER': 'chungiap_decom_user',
         'PASSWORD': '{}^g#pSOoHP!',
-        'HOST': 'http://chungiapp.com',  # Set to your MySQL server host
+        'HOST': '8.39.235.63',  # Set to your MySQL server host
         'PORT': '3306',       # Set to your MySQL server port
     }
 }

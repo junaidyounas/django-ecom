@@ -91,16 +91,28 @@ WSGI_APPLICATION = 'ecom.wsgi.application'
 #     }
 # }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'chungiap_decom',
+#         'USER': 'chungiap_decom_user',
+#         'PASSWORD': '{}^g#pSOoHP!',
+#         'HOST': '8.39.235.63',  # Set to your MySQL server host
+#         'PORT': '3306',       # Set to your MySQL server port
+#     }
+# }
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'chungiap_decom',
-        'USER': 'chungiap_decom_user',
-        'PASSWORD': '{}^g#pSOoHP!',
-        'HOST': '8.39.235.63',  # Set to your MySQL server host
-        'PORT': '3306',       # Set to your MySQL server port
-    }
-}
+     'default': {
+         'ENGINE': 'djongo',
+         'NAME': 'djongo',
+         'CLIENT': {
+            'host': 'mongodb+srv://junaid1:fcfsBNHWYlwJNNwC@cluster0.fj5yldf.mongodb.net/',
+            'username': 'junaid1',
+            'password': 'fcfsBNHWYlwJNNwC'
+         }
+     }
+ }
 
 
 # Password validation

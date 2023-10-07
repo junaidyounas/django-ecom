@@ -94,10 +94,10 @@ WSGI_APPLICATION = 'ecom.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'mydjango',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': 'localhost',  # Set to your MySQL server host
+        'NAME': 'chungiap_decom',
+        'USER': 'chungiap_decom_user',
+        'PASSWORD': '{}^g#pSOoHP!',
+        'HOST': 'http://chungiapp.com',  # Set to your MySQL server host
         'PORT': '3306',       # Set to your MySQL server port
     }
 }

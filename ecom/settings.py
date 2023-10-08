@@ -32,8 +32,9 @@ INSTALLED_APPS = [
     'slippers',
     'ckeditor',
     'django.contrib.humanize',
-    'djongo'
 ]
+
+
 
 # CKEDITOR_CONFIGS = {
     # 'default': {
@@ -128,18 +129,33 @@ WSGI_APPLICATION = 'ecom.wsgi.application'
 #     }
 # }
 
+# DATABASES = {
+#         'default': {
+#             'ENGINE': 'djongo',
+#             'NAME': 'ChungiApp',
+#             'CLIENT': {
+#                 'host': 'mongodb+srv://junaid1:fcfsBNHWYlwJNNwC@cluster0.fj5yldf.mongodb.net',
+#                 'username': 'junaid1',
+#                 'password': 'fcfsBNHWYlwJNNwC',
+#             }  
+#         }
+# }
+
 DATABASES = {
-        'default': {
-            'ENGINE': 'djongo',
-            'NAME': 'ChungiApp',
-            'CLIENT': {
-                'host': 'mongodb+srv://junaid1:fcfsBNHWYlwJNNwC@cluster0.fj5yldf.mongodb.net',
-                'username': 'junaid1',
-                'password': 'fcfsBNHWYlwJNNwC',
-                "authMechanism": "SCRAM-SHA-1",
-            }  
-        }
+    'default': {
+        'ENGINE': 'djongo',
+        'NAME': 'ChungiApp',  # Replace with your MongoDB database name
+        'HOST': 'mongodb+srv://junaid1:fcfsBNHWYlwJNNwC@cluster0.fj5yldf.mongodb.net', # MongoDB host (replace with your MongoDB server's hostname or IP address)
+        'PORT': 27017,  # MongoDB default port
+        'USER': 'junaid1',  # MongoDB username (if authentication is required)
+        'PASSWORD': 'fcfsBNHWYlwJNNwC',  # MongoDB password (if authentication is required)
+        'AUTH_SOURCE': 'admin',  # MongoDB authentication database (if needed, default is 'admin')
+        'AUTH_MECHANISM': 'SCRAM-SHA-1',  # Authentication mechanism (default is 'SCRAM-SHA-1')
+    }
 }
+
+
+
 
 
 # Password validation

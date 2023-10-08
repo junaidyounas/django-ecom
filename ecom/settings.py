@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'slippers',
     'ckeditor',
     'django.contrib.humanize',
+    'djongo'
 ]
 
 # CKEDITOR_CONFIGS = {
@@ -102,17 +103,43 @@ WSGI_APPLICATION = 'ecom.wsgi.application'
 #     }
 # }
 
+# DATABASES = {
+#      'default': {
+#          'ENGINE': 'djongo',
+#          'NAME': 'junaid1',
+#          'CLIENT': {
+#             'host': 'mongodb+srv://junaid1:fcfsBNHWYlwJNNwC@cluster0.fj5yldf.mongodb.net/',
+#             'username': 'junaid1',
+#             'password': 'fcfsBNHWYlwJNNwC'
+#          }
+#      }
+#  }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'djongo',
+#         'NAME': 'ChungiApp',
+#         'CLIENT': {
+#             'host': 'mongodb+srv://junaid1:fcfsBNHWYlwJNNwC@cluster0.fj5yldf.mongodb.net',  # Default is 'localhost'
+#             'port': 27017,  # Default MongoDB port
+#             'username': 'junaid1',  # If MongoDB requires authentication
+#             'password': 'fcfsBNHWYlwJNNwC',  # If MongoDB requires authentication
+#         }
+#     }
+# }
+
 DATABASES = {
-     'default': {
-         'ENGINE': 'djongo',
-         'NAME': 'djongo',
-         'CLIENT': {
-            'host': 'mongodb+srv://junaid1:fcfsBNHWYlwJNNwC@cluster0.fj5yldf.mongodb.net/',
-            'username': 'junaid1',
-            'password': 'fcfsBNHWYlwJNNwC'
-         }
-     }
- }
+        'default': {
+            'ENGINE': 'djongo',
+            'NAME': 'ChungiApp',
+            'CLIENT': {
+                'host': 'mongodb+srv://junaid1:fcfsBNHWYlwJNNwC@cluster0.fj5yldf.mongodb.net',
+                'username': 'junaid1',
+                'password': 'fcfsBNHWYlwJNNwC',
+                "authMechanism": "SCRAM-SHA-1",
+            }  
+        }
+}
 
 
 # Password validation
